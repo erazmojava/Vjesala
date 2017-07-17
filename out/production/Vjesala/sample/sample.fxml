@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="784.0" style="-fx-background-color: Wight;" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <Circle fx:id="glava" fill="WHITE" layoutX="675.0" layoutY="228.0" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+      <Line fx:id="vjesalo1" endX="100.0" layoutX="524.0" layoutY="457.0" startX="-100.0" />
+      <Button fx:id="novo" layoutX="584.0" layoutY="40.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" text="New" />
+      <Line fx:id="vjesalo2" endX="100.0" layoutX="575.0" layoutY="306.0" rotate="90.0" startX="-200.0" />
+      <Line fx:id="vjesalo3" endX="100.0" layoutX="574.0" layoutY="155.0" startX="-50.0" />
+      <Line fx:id="vjesalo4" endX="100.0" layoutX="600.0" layoutY="180.0" rotate="90.0" startX="50.0" />
+      <Line fx:id="tijelo" endX="100.0" layoutX="625.0" layoutY="301.0" rotate="90.0" />
+      <Line fx:id="ruka1" endX="100.0" layoutX="619.0" layoutY="370.0" rotate="45.0" startX="50.0" />
+      <Line fx:id="ruka2" endX="100.0" layoutX="579.0" layoutY="369.0" rotate="135.0" startX="50.0" />
+      <Line fx:id="noga1" endX="100.0" layoutX="615.0" layoutY="287.0" rotate="160.0" startX="60.0" />
+      <Line fx:id="noga2" endX="100.0" layoutX="574.0" layoutY="286.0" rotate="25.0" startX="60.0" />
+      <Label fx:id="rijec" alignment="CENTER" layoutX="44.0" layoutY="78.0" prefHeight="44.0" prefWidth="231.0" style="-fx-background-color: Grey;" textFill="WHITE">
+         <font>
+            <Font size="30.0" />
+         </font></Label>
+      <TextField fx:id="slovo" layoutX="60.0" layoutY="228.0" prefHeight="37.0" prefWidth="44.0" style="-fx-background-color: Grey;" />
+      <Button fx:id="submit" layoutX="114.0" layoutY="234.0" mnemonicParsing="false" text="Submit" />
+   </children>
+</Pane>
