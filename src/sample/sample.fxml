@@ -3,21 +3,42 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<Pane fx:controller="sample.Controller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="630.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <Button fx:id="Check" layoutX="296.0" layoutY="402.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="52.0" text="Check" />
-      <TextField fx:id="slovo" layoutX="160.0" layoutY="402.0" prefHeight="52.0" prefWidth="52.0" />
-      <Button fx:id="NEW" layoutX="348.0" layoutY="89.0" prefHeight="52.0" prefWidth="52.0" style="-fx-background-color: blue;" text="NEW" />
-      <Circle fx:id="glava" fill="#fff42159" layoutX="521.0" layoutY="131.0" radius="65.0" stroke="BLACK" strokeType="INSIDE" />
-      <Line fx:id="tijelo" endX="100.0" layoutX="522.0" layoutY="297.0" rotate="90.0" startX="-100.0" />
-      <Line fx:id="desnaRuka" endX="50.0" layoutX="484.0" layoutY="222.0" rotate="45.0" startX="-50.0" />
-      <Line fx:id="lijevaRuka" endX="50.0" layoutX="560.0" layoutY="222.0" rotate="-45.0" startX="-50.0" />
-      <Line fx:id="desnaNoga" endX="50.0" layoutX="484.0" layoutY="435.0" rotate="-45.0" startX="-50.0" />
-      <Line fx:id="lijevaNoga" endX="50.0" layoutX="560.0" layoutY="435.0" rotate="45.0" startX="-50.0" />
-      <Label fx:id="rijec" layoutX="37.0" layoutY="89.0" prefHeight="52.0" prefWidth="310.0" style="-fx-background-color: White;" />
+      <TextField fx:id="slovo" layoutX="64.0" layoutY="103.0" onAction="#checkChar" onKeyPressed="#toUper" prefHeight="25.0" prefWidth="40.0">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <Button fx:id="check" layoutX="115.0" layoutY="114.0" mnemonicParsing="false" text="Check char" />
+      <Button fx:id="new_word" layoutX="420.0" layoutY="48.0" mnemonicParsing="false" text="New word" />
+      <Circle fx:id="glava" fill="#ed6b11" layoutX="367.0" layoutY="126.0" opacity="0.1" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+      <Line fx:id="tijelo" endX="100.0" layoutX="327.0" layoutY="229.0" opacity="0.1" rotate="90.0" startX="-20.0" />
+      <Line fx:id="lijeva_ruka" endX="100.0" layoutX="282.0" layoutY="229.0" opacity="0.1" rotate="-45.0" startX="-10.0" />
+      <Line fx:id="desna_ruka" endX="100.0" layoutX="362.0" layoutY="228.0" opacity="0.1" rotate="45.0" startX="-10.0" />
+      <Line fx:id="lijeva_noga" endX="100.0" layoutX="281.0" layoutY="308.0" opacity="0.1" rotate="-45.0" startX="-10.0" />
+      <Line fx:id="desna_noga" endX="100.0" layoutX="362.0" layoutY="308.0" opacity="0.1" rotate="45.0" startX="-10.0" />
+      <Label fx:id="rijec" layoutX="64.0" layoutY="43.0" prefHeight="35.0" prefWidth="345.0" style="-fx-background-color : #e4ded5;">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <effect>
+            <Glow />
+         </effect></Label>
+      <Label fx:id="unesena_rijec" layoutX="73.0" layoutY="47.0" visible="false">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="poruka" layoutX="70.0" layoutY="160.0" text="" textFill="RED">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Button fx:id="result" layoutX="199.0" layoutY="114.0" mnemonicParsing="false" text="Enter Result" />
    </children>
 </Pane>
