@@ -125,12 +125,14 @@ public class Controller implements Initializable {
             }
 
 
-            if (rijec.getText().equals(unesena_rijec.getText())) {
-                pobjeda();
-            }
+
         }
         //Reset "slovo" input
         slovo.setText("");
+        //Uporedi unesenu riječ i trenutnu riječ
+        if (rijec.getText().equals(unesena_rijec.getText())) {
+            pobjeda();
+        }
 
 
     }
@@ -140,7 +142,7 @@ public class Controller implements Initializable {
         TextInputDialog dialog = new TextInputDialog("ERAZMO");
         dialog.setTitle("Enter word - Start Vjesala Game");
         dialog.setHeaderText("Prije početka igre unesite traženu riječ!");
-        dialog.setContentText("Please enter uperCase word:");
+        dialog.setContentText("Please enter word:");
 
 
 // Traditional way to get the response value.
@@ -150,7 +152,7 @@ public class Controller implements Initializable {
         if (result.isPresent()) {
             String string = "";
             //Save input Word to hidden textbox
-            unesena_rijec.setText(result.get());
+            unesena_rijec.setText(result.get().toUpperCase());
 
 
             for (int i = 0; i < result.get().length(); i++) {
@@ -178,7 +180,7 @@ public class Controller implements Initializable {
         TextInputDialog dialog = new TextInputDialog("");
         dialog.setTitle("Vjesala Game - Enter Word");
         dialog.setHeaderText("Unesite konačan rezultat!");
-        dialog.setContentText("Please enter uperCase word:");
+        dialog.setContentText("Please enter word:");
 
 
 // Traditional way to get the response value.
@@ -187,9 +189,9 @@ public class Controller implements Initializable {
         //if OK
         if (result.isPresent()) {
             String s = "";
-            s = result.get();
+            s = result.get().toUpperCase();
             //Save input Word to hidden textbox
-            if (unesena_rijec.getText().equals(s)) {
+            if (unesena_rijec.getText().toUpperCase().equals(s)) {
                 pobjeda();
 
             } else {
