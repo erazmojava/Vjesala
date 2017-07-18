@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.QuadCurve?>
 <?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
@@ -40,5 +41,6 @@
             <Font size="14.0" />
          </font></Label>
       <Button fx:id="result" layoutX="199.0" layoutY="114.0" mnemonicParsing="false" text="Enter Result" />
+      <QuadCurve fx:id="linija" controlX="-50.0" controlY="-100.0" endX="50.0" fill="TRANSPARENT" layoutX="464.0" layoutY="167.0" opacity="0.1" rotate="139.9" startX="-100.0" stroke="BLACK" strokeType="INSIDE" />
    </children>
 </Pane>
