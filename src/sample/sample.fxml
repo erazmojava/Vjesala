@@ -7,23 +7,24 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.QuadCurve?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <TextField fx:id="slovo" layoutX="64.0" layoutY="103.0" onAction="#checkChar" onKeyPressed="#toUper" prefHeight="25.0" prefWidth="40.0">
+      <TextField fx:id="slovo" layoutX="120.0" layoutY="107.0" onAction="#checkChar" onKeyPressed="#toUper" prefHeight="25.0" prefWidth="40.0">
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <Button fx:id="check" layoutX="115.0" layoutY="114.0" mnemonicParsing="false" text="Check char" />
-      <Button fx:id="new_word" layoutX="420.0" layoutY="48.0" mnemonicParsing="false" text="New word" />
-      <Circle fx:id="glava" fill="#ed6b11" layoutX="367.0" layoutY="126.0" opacity="0.1" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
-      <Line fx:id="tijelo" endX="100.0" layoutX="327.0" layoutY="229.0" opacity="0.1" rotate="90.0" startX="-20.0" />
-      <Line fx:id="lijeva_ruka" endX="100.0" layoutX="282.0" layoutY="229.0" opacity="0.1" rotate="-45.0" startX="-10.0" />
-      <Line fx:id="desna_ruka" endX="100.0" layoutX="362.0" layoutY="228.0" opacity="0.1" rotate="45.0" startX="-10.0" />
-      <Line fx:id="lijeva_noga" endX="100.0" layoutX="281.0" layoutY="308.0" opacity="0.1" rotate="-45.0" startX="-10.0" />
-      <Line fx:id="desna_noga" endX="100.0" layoutX="362.0" layoutY="308.0" opacity="0.1" rotate="45.0" startX="-10.0" />
-      <Label fx:id="rijec" layoutX="64.0" layoutY="43.0" prefHeight="35.0" prefWidth="345.0" style="-fx-background-color : #e4ded5;">
+      <Button fx:id="check" layoutX="172.0" layoutY="114.0" mnemonicParsing="false" text="Check" />
+      <Button fx:id="new_word" layoutX="310.0" layoutY="114.0" mnemonicParsing="false" text="New word" />
+      <Circle fx:id="glava" fill="#ed6b11" layoutX="448.0" layoutY="129.0" opacity="0.1" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
+      <Line fx:id="tijelo" endX="100.0" layoutX="398.0" layoutY="222.0" opacity="0.1" rotate="90.0" />
+      <Line fx:id="lijeva_ruka" endX="100.0" layoutX="363.0" layoutY="232.0" opacity="0.1" rotate="-45.0" startX="-10.0" />
+      <Line fx:id="desna_ruka" endX="100.0" layoutX="443.0" layoutY="231.0" opacity="0.1" rotate="45.0" startX="-10.0" />
+      <Line fx:id="lijeva_noga" endX="100.0" layoutX="362.0" layoutY="311.0" opacity="0.1" rotate="-45.0" startX="-10.0" />
+      <Line fx:id="desna_noga" endX="100.0" layoutX="443.0" layoutY="311.0" opacity="0.1" rotate="45.0" startX="-10.0" />
+      <Label fx:id="rijec" layoutX="120.0" layoutY="43.0" style="-fx-background-color : #e4ded5;">
          <font>
             <Font size="24.0" />
          </font>
@@ -35,10 +36,14 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="poruka" layoutX="70.0" layoutY="160.0" text="" textFill="RED">
+      <Label fx:id="poruka" layoutX="120.0" layoutY="169.0" text="" textFill="RED">
          <font>
             <Font size="14.0" />
          </font></Label>
-      <Button fx:id="result" layoutX="199.0" layoutY="114.0" mnemonicParsing="false" text="Enter Result" />
+      <Button fx:id="result" layoutX="225.0" layoutY="114.0" mnemonicParsing="false" text="Enter Result" />
+      <QuadCurve fx:id="linija" controlX="-50.0" controlY="-100.0" endX="50.0" fill="TRANSPARENT" layoutX="545.0" layoutY="170.0" opacity="0.1" rotate="139.9" startX="-100.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label layoutX="14.0" layoutY="52.0" text="Discover the word:" />
+      <Label layoutX="14.0" layoutY="118.0" text="Enter the letter:" />
+      <Line endX="95.0" layoutX="506.0" layoutY="79.0" startX="-20.0" />
    </children>
 </Pane>

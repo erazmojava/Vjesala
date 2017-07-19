@@ -3,6 +3,8 @@ package sample;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -14,6 +16,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.QuadCurve;
 
 import java.io.File;
 import java.net.URL;
@@ -48,6 +51,8 @@ public class Controller implements Initializable {
     @FXML
     public Label poruka;
     @FXML
+    public QuadCurve linija;
+    @FXML
     public Button result;
     //Za brojenje grešaka
     int brojac;
@@ -60,6 +65,7 @@ public class Controller implements Initializable {
         lijeva_ruka.setOpacity(0.1);
         desna_noga.setOpacity(0.1);
         lijeva_noga.setOpacity(0.1);
+        linija.setOpacity(0.1);
     }
 
     @Override
@@ -68,7 +74,14 @@ public class Controller implements Initializable {
         alert();
         //Limit Field "slovo" to 1 char
         addTextLimiter(slovo, 1);
-//Set text to poruka
+        //add ToolTip to button
+        check.setTooltip(new Tooltip("Možete koristit i tipku 'Enter' za potvrdu!"));
+        //add ToolTip to button Result
+        result.setTooltip(new Tooltip("Unesite konačan odgovor, ukoliko znate!"));
+        //add ToolTip to button New Word
+        new_word.setTooltip(new Tooltip("Unesite novu riječ koju želite tražiti!"));
+
+        //Set text to poruka
         poruka.setText("Ukupno imate 6 života!");
         //Button New Word
         new_word.setOnAction(new EventHandler<ActionEvent>() {
@@ -77,7 +90,8 @@ public class Controller implements Initializable {
                 alert();
                 reset();
                 brojac = 0;
-                poruka.setText("");
+                //Set text to poruka
+                poruka.setText("Ukupno imate 6 života!");
             }
         });
 
@@ -104,10 +118,10 @@ public class Controller implements Initializable {
             poruka.setText("Molimo, unesite neko slovo!");
             return;
         }
-        if (slovo.getText().matches("[0-9.]")) {
-            poruka.setText("Molimo, unesite neko slovo a ne broj!");
-            return;
-        }
+        //  if (slovo.getText().matches("[0-9.]")) {
+        //    poruka.setText("Molimo, unesite neko slovo a ne broj!");
+        //  return;
+        //  }
 
         if (!unesena_rijec.getText().contains(slovo.getText())) {
             brojac();
@@ -115,8 +129,8 @@ public class Controller implements Initializable {
         }
 
         for (int i = 0; i < unesena_rijec.getText().length(); i++) {
-            //add new _ to string. Lenght from inut alert
 
+            //Provjeri uneseno slovo i slova unutar riječi, ako postoji onda ga pozicioniraj na index
             if (unesena_rijec.getText().charAt(i) == slovo.getText().charAt(0)) {
                 StringBuilder str = new StringBuilder(rijec.getText());
                 str.setCharAt(i, slovo.getText().charAt(0));
@@ -125,12 +139,13 @@ public class Controller implements Initializable {
             }
 
 
-            if (rijec.getText().equals(unesena_rijec.getText())) {
-                pobjeda();
-            }
         }
         //Reset "slovo" input
         slovo.setText("");
+        //Uporedi unesenu riječ i trenutnu riječ svaki put kada unosis novo slovo
+        if (rijec.getText().equals(unesena_rijec.getText())) {
+            pobjeda();
+        }
 
 
     }
@@ -140,7 +155,7 @@ public class Controller implements Initializable {
         TextInputDialog dialog = new TextInputDialog("ERAZMO");
         dialog.setTitle("Enter word - Start Vjesala Game");
         dialog.setHeaderText("Prije početka igre unesite traženu riječ!");
-        dialog.setContentText("Please enter uperCase word:");
+        dialog.setContentText("Please enter word:");
 
 
 // Traditional way to get the response value.
@@ -150,7 +165,7 @@ public class Controller implements Initializable {
         if (result.isPresent()) {
             String string = "";
             //Save input Word to hidden textbox
-            unesena_rijec.setText(result.get());
+            unesena_rijec.setText(result.get().toUpperCase());
 
 
             for (int i = 0; i < result.get().length(); i++) {
@@ -178,7 +193,7 @@ public class Controller implements Initializable {
         TextInputDialog dialog = new TextInputDialog("");
         dialog.setTitle("Vjesala Game - Enter Word");
         dialog.setHeaderText("Unesite konačan rezultat!");
-        dialog.setContentText("Please enter uperCase word:");
+        dialog.setContentText("Please enter word:");
 
 
 // Traditional way to get the response value.
@@ -187,9 +202,9 @@ public class Controller implements Initializable {
         //if OK
         if (result.isPresent()) {
             String s = "";
-            s = result.get();
-            //Save input Word to hidden textbox
-            if (unesena_rijec.getText().equals(s)) {
+            s = result.get().toUpperCase();
+
+            if (unesena_rijec.getText().toUpperCase().equals(s)) {
                 pobjeda();
 
             } else {
@@ -240,23 +255,24 @@ public class Controller implements Initializable {
 
         if (brojac == 1) {
             glava.setOpacity(100);
-            poruka.setText("Imate još 5 života!");
+            linija.setOpacity(100);
+            poruka.setText("Slovo '" + slovo.getText() + "' nije pronađeno \nImate još 5 života!");
         }
         if (brojac == 2) {
             tijelo.setOpacity(100);
-            poruka.setText("Imate još 4 života!");
+            poruka.setText("Slovo '" + slovo.getText() + "' nije pronađeno \nImate još 4 života!");
         }
         if (brojac == 3) {
             desna_ruka.setOpacity(100);
-            poruka.setText("Imate još 3 života!");
+            poruka.setText("Slovo '" + slovo.getText() + "' nije pronađeno \nImate još 3 života!");
         }
         if (brojac == 4) {
             lijeva_ruka.setOpacity(100);
-            poruka.setText("Imate još 2 života!");
+            poruka.setText("Slovo '" + slovo.getText() + "' nije pronađeno \nImate još 2 života!");
         }
         if (brojac == 5) {
             desna_noga.setOpacity(100);
-            poruka.setText("Imate još 1 život!");
+            poruka.setText("Slovo '" + slovo.getText() + "' nije pronađeno \nImate još 1 život!");
         }
         if (brojac == 6) {
             lijeva_noga.setOpacity(100);
