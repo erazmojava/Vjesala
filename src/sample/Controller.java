@@ -3,6 +3,8 @@ package sample;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -73,7 +75,12 @@ public class Controller implements Initializable {
         //Limit Field "slovo" to 1 char
         addTextLimiter(slovo, 1);
         //add ToolTip to button
-        check.setTooltip(new Tooltip("Možete koristit i tipku 'Enter' za potvrdu"));
+        check.setTooltip(new Tooltip("Možete koristit i tipku 'Enter' za potvrdu!"));
+        //add ToolTip to button Result
+        result.setTooltip(new Tooltip("Unesite konačan odgovor, ukoliko znate!"));
+        //add ToolTip to button New Word
+        new_word.setTooltip(new Tooltip("Unesite novu riječ koju želite tražiti!"));
+
         //Set text to poruka
         poruka.setText("Ukupno imate 6 života!");
         //Button New Word
@@ -122,8 +129,8 @@ public class Controller implements Initializable {
         }
 
         for (int i = 0; i < unesena_rijec.getText().length(); i++) {
-            //add new _ to string. Lenght from inut alert
 
+            //Provjeri uneseno slovo i slova unutar riječi, ako postoji onda ga pozicioniraj na index
             if (unesena_rijec.getText().charAt(i) == slovo.getText().charAt(0)) {
                 StringBuilder str = new StringBuilder(rijec.getText());
                 str.setCharAt(i, slovo.getText().charAt(0));
@@ -135,7 +142,7 @@ public class Controller implements Initializable {
         }
         //Reset "slovo" input
         slovo.setText("");
-        //Uporedi unesenu riječ i trenutnu riječ
+        //Uporedi unesenu riječ i trenutnu riječ svaki put kada unosis novo slovo
         if (rijec.getText().equals(unesena_rijec.getText())) {
             pobjeda();
         }
@@ -249,23 +256,23 @@ public class Controller implements Initializable {
         if (brojac == 1) {
             glava.setOpacity(100);
             linija.setOpacity(100);
-            poruka.setText("Slovo '"+slovo.getText()+ "' nije pronađeno \nImate još 5 života!");
+            poruka.setText("Slovo '" + slovo.getText() + "' nije pronađeno \nImate još 5 života!");
         }
         if (brojac == 2) {
             tijelo.setOpacity(100);
-            poruka.setText("Slovo '"+slovo.getText()+ "' nije pronađeno \nImate još 4 života!");
+            poruka.setText("Slovo '" + slovo.getText() + "' nije pronađeno \nImate još 4 života!");
         }
         if (brojac == 3) {
             desna_ruka.setOpacity(100);
-            poruka.setText("Slovo '"+slovo.getText()+ "' nije pronađeno \nImate još 3 života!");
+            poruka.setText("Slovo '" + slovo.getText() + "' nije pronađeno \nImate još 3 života!");
         }
         if (brojac == 4) {
             lijeva_ruka.setOpacity(100);
-            poruka.setText("Slovo '"+slovo.getText()+ "' nije pronađeno \nImate još 2 života!");
+            poruka.setText("Slovo '" + slovo.getText() + "' nije pronađeno \nImate još 2 života!");
         }
         if (brojac == 5) {
             desna_noga.setOpacity(100);
-            poruka.setText("Slovo '"+slovo.getText()+ "' nije pronađeno \nImate još 1 život!");
+            poruka.setText("Slovo '" + slovo.getText() + "' nije pronađeno \nImate još 1 život!");
         }
         if (brojac == 6) {
             lijeva_noga.setOpacity(100);
